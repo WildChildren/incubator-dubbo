@@ -16,12 +16,13 @@
  */
 package com.alibaba.dubbo.demo.provider;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.alibaba.dubbo.demo.DemoService;
 import com.alibaba.dubbo.rpc.RpcContext;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@Service
 public class DemoServiceImpl implements DemoService {
 
     @Override

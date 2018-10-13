@@ -16,7 +16,7 @@
  */
 package com.alibaba.dubbo.demo.provider;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Provider {
 
@@ -24,7 +24,10 @@ public class Provider {
         //Prevent to get IPV6 address,this way only work in debug mode
         //But you can pass use -Djava.net.preferIPv4Stack=true,then it work well whether in debug mode or not
         System.setProperty("java.net.preferIPv4Stack", "true");
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-provider.xml"});
+        //ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/dubbo-demo-provider.xml"});
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(ProviderConfiguration.class);
+        context.refresh();
         context.start();
 
         System.in.read(); // press any key to exit
